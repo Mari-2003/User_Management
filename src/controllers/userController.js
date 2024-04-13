@@ -141,12 +141,11 @@ const login = async (req, res) => {
 
 
 const updateUser = async (req, res) => {
-    const {userId} = req.params;
     const { firstName, lastName, email, mobileNumber, role, password } = req.body;
     try {
         
         let user = await users.findById({
-            _id:userId
+            _id:req.user[0].id
         });
 
         
