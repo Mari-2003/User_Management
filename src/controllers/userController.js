@@ -141,11 +141,12 @@ const login = async (req, res) => {
 
 
 const updateUser = async (req, res) => {
-    
+    const {userId} = req.params;
     const { firstName, lastName, email, mobileNumber, role, password } = req.body;
     try {
+        
         let user = await users.findById({
-            _id:req.user[0].id
+            _id:userId
         });
 
         
@@ -210,8 +211,7 @@ const updateUser = async (req, res) => {
 
         res.status(200).json(successResponse(200, "User updated successfully", updateUser));
     } catch (error) {
-        console.error("Error updating user:", error);
-        res.status(500).json(errorResponse(500, "Internal server error"));
+        res.status(500).json(errorResponse());
     }
 };
 
@@ -224,7 +224,6 @@ const getOneUserDetails = async(req,res)=>{
     res.status(200).json(successResponse(200,"User Retrieve Successfully",findUser))
 
 }catch(error){
-    console.log(error);
     res.status(500).json(errorResponse());
 }
 }
