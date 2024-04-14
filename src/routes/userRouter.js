@@ -17,7 +17,8 @@ router.get('/alluser', verifyToken, userController.getAllUserDetails);
 //Route in BlogPost
 router.post ('/post',verifyToken, blogPostController.createPost);
 router.put('/post/:id', verifyToken,blogPostController.updatePost);
-router.delete('/post/:id',verifyToken, blogPostController.deletePost)
+router.delete('/post/:id',verifyToken, blogPostController.deletePost);
+router.get('/post/:id', verifyToken, blogPostController.getOnePost);
 
 //Route in Comments
 router.post('/comment',verifyToken, commentController.createComment);
